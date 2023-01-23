@@ -6,6 +6,6 @@ public class IdNumberValidator implements Predicate<String> {
 
     @Override
     public boolean test(String idNumber) {
-        return idNumber.length() == 13;
+        return idNumber.length() == 13 && idNumber.chars().allMatch(Character::isDigit);
     }
 }

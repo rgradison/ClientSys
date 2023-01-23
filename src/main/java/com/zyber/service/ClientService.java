@@ -1,6 +1,8 @@
 package com.zyber.service;
 
 import com.model.Client;
+import com.utils.IdNumberValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Service
 public class ClientService {
+    private IdNumberValidator idNumberValidator = new IdNumberValidator();
+
     boolean result;
     private List<Client> clients = new ArrayList<>(Arrays.asList(
             new Client("Ralph", "King", "0763451234", "5901185800087", "91 Blairgowrie Dr"),
@@ -116,6 +120,11 @@ public class ClientService {
     }
 
     public Client getClientById(String id) {
+        if(!idNumberValidator.test(id)){
+            System.out.println("Test failed");
+        }
+        System.out.println("Test successful");
+
         return clients.stream().filter(c -> c.getIdNumber().equals(id)).findFirst().get();
     }
 
