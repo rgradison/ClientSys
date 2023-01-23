@@ -21,8 +21,9 @@ public class ClientController {
     }
 
     //Search client by ID
-    @RequestMapping(method = RequestMethod.GET,value="/client/search/{id}")
+    @RequestMapping(method = RequestMethod.GET,value="/find/search/{id}")
     public Client searchClientById(@Valid @PathVariable String id){
+        //Move this code to a service and method
         if (id.length() != 13) {
             System.out.println("Please enter a valid 13 character ID");
 
@@ -53,6 +54,5 @@ public class ClientController {
     public void updateClient(@Valid @RequestBody Client client, @Valid @PathVariable String id){
         clientService.updateClient(id,client);
     }
-
 
 }
