@@ -121,10 +121,8 @@ public class ClientService {
 
     public Client getClientById(String id) {
         if(!idNumberValidator.test(id)){
-            System.out.println("Test failed");
+            throw new IllegalArgumentException("Invalid Id" + id + ": " + "Not valid.");
         }
-        System.out.println("Test successful");
-
         return clients.stream().filter(c -> c.getIdNumber().equals(id)).findFirst().get();
     }
 

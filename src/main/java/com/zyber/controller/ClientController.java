@@ -26,7 +26,6 @@ public class ClientController {
         //Move this code to a service and method
         if (id.length() != 13) {
             System.out.println("Please enter a valid 13 character ID");
-
         }
         return clientService.getClientById(id);
     }

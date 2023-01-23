@@ -1,7 +1,9 @@
 package com.utils;
 
-import java.util.function.Predicate;
+import org.springframework.stereotype.Service;
 
+import java.util.function.Predicate;
+@Service
 public class IdNumberValidator implements Predicate<String> {
 
     @Override
