@@ -26,7 +26,7 @@ public class ClientService {
 
         if((isValidNumberWith13Digits(id)) && (hasValidDate(id))){
             int sum = 0;
-            int digit = Integer.parseInt(id);
+            int digit = Integer.parseInt((id));
 
             int size = id.length()-1;
 
@@ -52,7 +52,6 @@ public class ClientService {
             }else{
                 result=false;
             }
-
         }
 
         return result;
