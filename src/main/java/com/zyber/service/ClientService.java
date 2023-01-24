@@ -2,6 +2,7 @@ package com.zyber.service;
 
 import com.model.Client;
 import com.utils.IdNumberValidator;
+import com.utils.MobileNumberValidator;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ import java.util.List;
 @Service
 public class ClientService {
     private final IdNumberValidator idNumberValidator = new IdNumberValidator();
+    private final MobileNumberValidator pNumberValidator= new MobileNumberValidator();
 
     private List<Client> clients = new ArrayList<>(Arrays.asList(
             new Client("Ralph", "King", "0763451234", "5901185800087", "91 Blairgowrie Dr"),
@@ -49,6 +51,9 @@ public class ClientService {
     }
 
     public Client getClientByPhoneNumber(String phoneNumber) {
+        if(!pNumberValidator.test(phoneNumber)){
+            throw new IllegalArgumentException("Invalid Phone Number" + phoneNumber + ": " + "Not valid.");
+        }
         return clients.stream().filter(c -> c.getMobileNumber().equals(phoneNumber)).findFirst().get();
     }
 

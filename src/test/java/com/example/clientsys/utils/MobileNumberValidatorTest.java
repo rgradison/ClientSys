@@ -1,6 +1,5 @@
 package com.example.clientsys.utils;
 
-import com.utils.IdNumberValidator;
 import com.utils.MobileNumberValidator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
