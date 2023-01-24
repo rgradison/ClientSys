@@ -6,36 +6,27 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ClientServiceValidatorTest {
-    @Mock
-    private IdNumberValidator underTest;
-
-    @Mock
+public class MobileNumberValidatorTest {
     private MobileNumberValidator mobileNumberValidator;
-
     @BeforeEach
     void setUp(){
-        MockitoAnnotations.initMocks(this);
-        underTest = new IdNumberValidator();
         mobileNumberValidator = new MobileNumberValidator();
     }
 
     @ParameterizedTest()
-    @CsvSource({"7208085992081,true",
-            "72080859920081,False",
-            "720808592081,False"
+    @CsvSource({"+27824844002,true",
+            "+2782484400,False",
+            "+278248440021,False",
     })
-    @DisplayName("Should pass if ID number length is 13 && is digit")
-    void itShouldValidateIdNumber(String idNumber,boolean expected){
+    @DisplayName("Should pass if phone number length is 12 && is and starts with +27")
+    void itShouldValidateMobileNumber(String pNumber,boolean expected) throws Exception {
         //Given
-        // String idNumber = "7208085992081";
+        // String pNumber = "+27824844002";
         //When
-        boolean isValid = underTest.test(idNumber);
+        boolean isValid = mobileNumberValidator.test(pNumber);
 
         //Then
         assertThat(isValid).isEqualTo(expected);

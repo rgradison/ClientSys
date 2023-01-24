@@ -2,19 +2,14 @@ package com.zyber.service;
 
 import com.model.Client;
 import com.utils.IdNumberValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 @Service
 public class ClientService {
-    private IdNumberValidator idNumberValidator = new IdNumberValidator();
+    private final IdNumberValidator idNumberValidator = new IdNumberValidator();
 
     private List<Client> clients = new ArrayList<>(Arrays.asList(
             new Client("Ralph", "King", "0763451234", "5901185800087", "91 Blairgowrie Dr"),
